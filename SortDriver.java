@@ -3,7 +3,6 @@ import java.util.Scanner;
     public static void main(String[] args) {
         int sortType = getSortType();
         int numOfIntValues = getNumOfIntValues();
-        int y = 0;
     }
     public static int getSortType(){
         while(true){
