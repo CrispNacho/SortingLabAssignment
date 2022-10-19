@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Random;
 
 
 public class SortDriver {
@@ -40,11 +41,26 @@ public class SortDriver {
             }
             System.out.println("Enter number above 0");
             }
-    }
+    }	
 	//--------------------------------------------------------------------------//
-
+	/**
+	 * Creates an array a certain length depend on parameter
+	 * fills the array with random numbers from 0 to 2147483647
+	 * @param numOfIntegers //length of the array
+	 * @return //the array
+	 */
+	public static int[] randomValues(int numOfIntegers){
+		Random rand = new Random();
+		int arr[] = new int[numOfIntegers];
+		for(int i = 0; i < arr.length; i++){
+			arr[i] =  rand.nextInt(2147483647);
+		}
+		return arr;
+	}
 	// Driver method
 	public static void main(String args[]) {
-		
+		int sortType = getSortType();
+		int numOfIntValues = getNumOfIntValues();
+		int[] randomNumbers = randomValues(numOfIntValues);
 	}
 }
