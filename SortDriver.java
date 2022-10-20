@@ -84,6 +84,7 @@ public class SortDriver {
 		}
 		return arr;
 	}
+    //Quick sort methods
     static void swap(int[] arr, int i, int j)
     {
         int temp = arr[i];
@@ -142,6 +143,24 @@ public class SortDriver {
             quickSort(arr, pi + 1, high);
         }
     }
+    //Insertion sort method
+    void sort(int arr[])
+    {
+        int n = arr.length;
+        for (int i = 1; i < n; ++i) {
+            int key = arr[i];
+            int j = i - 1;
+ 
+            /* Move elements of arr[0..i-1], that are
+               greater than key, to one position ahead
+               of their current position */
+            while (j >= 0 && arr[j] > key) {
+                arr[j + 1] = arr[j];
+                j = j - 1;
+            }
+            arr[j + 1] = key;
+        }
+    }
   
     // Function to print an array
     static void printArray(int[] arr, int size)
@@ -159,17 +178,21 @@ public class SortDriver {
             numOfIntValues = getValueFromSet(); 
         }
         int[] randomNumbers = randomValues(numOfIntValues);
+        long preSort = System.currentTimeMillis();
         if(sortType == 1){
 
         }else if(sortType == 2){
 
         }else if(sortType == 3){
-            
+        SortDriver ob = new SortDriver();
+        ob.sort(randomNumbers);
         }else if(sortType == 4){
         quickSort(randomNumbers, 0, numOfIntValues - 1);
         System.out.println("Sorted array: ");  
         }
-        printArray(randomNumbers, numOfIntValues);
+        long postSort = System.currentTimeMillis();
+        System.out.println(postSort - preSort);
+        //printArray(randomNumbers, numOfIntValues);
         
 	}
 }
