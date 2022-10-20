@@ -3,7 +3,6 @@ import java.util.Random;
 
 
 public class SortDriver {
-
 	// Evan
 	public static int getSortType(){
         while(true){
@@ -27,7 +26,7 @@ public class SortDriver {
     public static int getNumOfIntValues(){
         while(true){
             Scanner reader = new Scanner(System.in);
-            System.out.println("How many integer values would you like to sort");
+            System.out.println("How many integer values would you like to sort(-1 for preset amount):");
             String numOfIntegers = reader.nextLine();
             int x = 0;
             try{x = Integer.parseInt(numOfIntegers);
@@ -36,12 +35,13 @@ public class SortDriver {
                 System.out.println("Enter number");
                 continue;
             }
-            if(x > 0){        
+            if(x > 0 || x == -1){        
             return x;
             }
             System.out.println("Enter number above 0");
             }
-    }	
+    }
+	
 	//--------------------------------------------------------------------------//
 	/**
 	 * Creates an array a certain length depend on parameter
@@ -57,6 +57,7 @@ public class SortDriver {
 		}
 		return arr;
 	}
+	
 	// Driver method
 	public static void main(String args[]) {
 		int sortType = getSortType();
