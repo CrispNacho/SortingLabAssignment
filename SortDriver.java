@@ -41,6 +41,33 @@ public class SortDriver {
             System.out.println("Enter number above 0");
             }
     }
+    public static int getValueFromSet(){
+        while(true){
+        Scanner reader = new Scanner(System.in);
+        System.out.println("Select a number from the following: 1:10000 2:20000 3:40000 4:80000 5:160000");
+        String sortType = reader.nextLine();
+        int x = 0;
+        try{x = Integer.parseInt(sortType);
+
+        }catch(Exception numberformatException){
+            System.out.println("Enter number");
+            continue;
+        }
+        if(x == 1){
+            return 10000;
+        }else if(x==2){
+            return 20000;
+        }else if(x==3){
+            return 40000;   
+        }else if(x==4){
+            return 80000;    
+        }else if(x==5){
+            return 160000;
+        }
+        System.out.println("Enter number within range");
+        }
+        
+    }
 	
 	//--------------------------------------------------------------------------//
 	/**
