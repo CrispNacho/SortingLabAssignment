@@ -85,7 +85,7 @@ public class SortDriver {
 		return arr;
 	}
     //Quick sort methods
-    static void swap(int[] arr, int i, int j)
+    static void quickSortswap(int[] arr, int i, int j)
     {
         int temp = arr[i];
         arr[i] = arr[j];
@@ -97,7 +97,7 @@ public class SortDriver {
        array, and places all smaller (smaller than pivot)
        to left of pivot and all greater elements to right
        of pivot */
-    static int partition(int[] arr, int low, int high)
+    static int quickSortPartition(int[] arr, int low, int high)
     {
   
         // pivot
@@ -117,10 +117,10 @@ public class SortDriver {
                 // Increment index of
                 // smaller element
                 i++;
-                swap(arr, i, j);
+                quickSortswap(arr, i, j);
             }
         }
-        swap(arr, i + 1, high);
+        quickSortswap(arr, i + 1, high);
         return (i + 1);
     }
   
@@ -135,7 +135,7 @@ public class SortDriver {
   
             // pi is partitioning index, arr[p]
             // is now at right place
-            int pi = partition(arr, low, high);
+            int pi = quickSortPartition(arr, low, high);
   
             // Separately sort elements before
             // partition and after partition
@@ -144,7 +144,7 @@ public class SortDriver {
         }
     }
     //Insertion sort method
-    void sort(int arr[])
+    void insertionSort(int arr[])
     {
         int n = arr.length;
         for (int i = 1; i < n; ++i) {
@@ -185,7 +185,7 @@ public class SortDriver {
 
         }else if(sortType == 3){
         SortDriver ob = new SortDriver();
-        ob.sort(randomNumbers);
+        ob.insertionSort(randomNumbers);
         }else if(sortType == 4){
         quickSort(randomNumbers, 0, numOfIntValues - 1);
         System.out.println("Sorted array: ");  
