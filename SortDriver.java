@@ -89,6 +89,10 @@ public class SortDriver {
 	public static void main(String args[]) {
 		int sortType = getSortType();
 		int numOfIntValues = getNumOfIntValues();
+        if(numOfIntValues == -1){
+            numOfIntValues = getValueFromSet();
+        }
+        System.out.println(numOfIntValues);
 		int[] randomNumbers = randomValues(numOfIntValues);
 	}
 }
