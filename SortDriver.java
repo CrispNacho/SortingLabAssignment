@@ -256,7 +256,7 @@ public class SortDriver {
         if(sortType == 1){
 
         }else if(sortType == 2){
-            MergeSort ob = new MergeSort();
+            SortDriver ob = new SortDriver();
 			ob.sort(randomNumbers, 0, numOfIntValues - 1); //user input array goes here instead
 
         }else if(sortType == 3){
