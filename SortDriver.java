@@ -21,7 +21,7 @@ public class SortDriver {
             continue;
         }
         if(x < 5 && x > 0){        
-        return x;
+            return x;
         }
         System.out.println("Enter number within range");
         }
@@ -40,13 +40,40 @@ public class SortDriver {
                 continue;
             }
             if(x > 0 || x == -1){        
-            return x;
+                return x;
             }
             System.out.println("Enter number above 0");
             }
     }
     public static void getValueFromSet(int sortType){
-            String filePath = "predefinedArrays.csv";
+            /* 
+        while(true){
+                Scanner reader = new Scanner(System.in);
+                System.out.println("Select a number from the following: 1:10000 2:20000 3:40000 4:80000 5:160000");
+                String sortType2 = reader.nextLine();
+                int x = 0;
+                try{x = Integer.parseInt(sortType2);
+        
+                }catch(Exception numberformatException){
+                    System.out.println("Enter number");
+                    continue;
+                }
+                if(x == 1){
+                    return 10000;
+                }else if(x==2){
+                    return 20000;
+                }else if(x==3){
+                    return 40000;   
+                }else if(x==4){
+                    return 80000;    
+                }else if(x==5){
+                    return 160000;
+                }
+            }
+        
+            //System.out.println("Enter number within range");
+            */
+            String filePath = "predefinedArrays.csv"; 
              // first create file object for file placed at location
              // specified by filepath
              try {
@@ -70,7 +97,6 @@ public class SortDriver {
                   System.out.println(i);
                  }
                  */
-         
            
                  // closing writer connection
                  outputfile.close();
@@ -79,7 +105,7 @@ public class SortDriver {
                  // TODO Auto-generated catch block
                  e.printStackTrace();
              }
-        
+            
         }
         
 
@@ -99,6 +125,10 @@ public class SortDriver {
 	}
     //Quick sort methods
 
+    /**
+     * Sorts the array using selection sort method
+     * @param arr array with integers to sort
+     */
     void selecionSort(int arr[])
 	{
 		int n = arr.length;
@@ -118,6 +148,13 @@ public class SortDriver {
 		}
 	}
     
+    /** 
+     * Sorts the array using merge sort method
+     * @param arr the array to sort
+     * @param l index to start at
+     * @param m middle
+     * @param r ending index of the array
+     */
     void mergeSort(int arr[], int l, int m, int r)
 	{
 		// Find sizes of two subarrays to be merged
@@ -277,6 +314,7 @@ public class SortDriver {
   
         System.out.println();
     }
+
     public static long getTimeToSortArray(int size, int sortType){
         int[] randomNumbers = randomValues(size);
         long preSort = System.currentTimeMillis();
@@ -295,6 +333,7 @@ public class SortDriver {
     }
 	// Driver method
 	public static void main(String args[]) {
+        System.out.println("Welcome To The Sorting Machine");
 		int sortType = getSortType();
 		int numOfIntValues = getNumOfIntValues();
         if(numOfIntValues == -1){
