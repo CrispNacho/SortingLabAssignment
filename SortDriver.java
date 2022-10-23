@@ -298,7 +298,8 @@ public class SortDriver {
 		int sortType = getSortType();
 		int numOfIntValues = getNumOfIntValues();
         if(numOfIntValues == -1){
-            getValueFromSet(sortType); 
+            getValueFromSet(sortType);
+            System.out.println("Done writing to file"); 
         }else{
             long time;
             time = getTimeToSortArray(numOfIntValues, sortType);
@@ -312,4 +313,3 @@ public class SortDriver {
         //printArray(randomNumbers, numOfIntValues);
         
 	}
-}
