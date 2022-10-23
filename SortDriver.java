@@ -1,6 +1,10 @@
 import java.util.Scanner;
 import java.util.Random;
 import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 
 public class SortDriver {
 
@@ -41,33 +45,43 @@ public class SortDriver {
             System.out.println("Enter number above 0");
             }
     }
-    public static int getValueFromSet(){
-        while(true){
-        Scanner reader = new Scanner(System.in);
-        System.out.println("Select a number from the following: 1:10000 2:20000 3:40000 4:80000 5:160000");
-        String sortType = reader.nextLine();
-        int x = 0;
-        try{x = Integer.parseInt(sortType);
-
-        }catch(Exception numberformatException){
-            System.out.println("Enter number");
-            continue;
-        }
-        if(x == 1){
-            return 10000;
-        }else if(x==2){
-            return 20000;
-        }else if(x==3){
-            return 40000;   
-        }else if(x==4){
-            return 80000;    
-        }else if(x==5){
-            return 160000;
-        }
-        System.out.println("Enter number within range");
+    public static void getValueFromSet(int sortType){
+            String filePath = "predefinedArrays.csv";
+             // first create file object for file placed at location
+             // specified by filepath
+             try {
+                 // create FileWriter object with file as parameter
+                 FileWriter outputfile = new FileWriter(filePath);
+                 outputfile.append("Array Size");
+                 outputfile.append(",");
+                 outputfile.append("Time in milliseconds");
+                 outputfile.append(",");
+                 outputfile.append("Sort Type " + sortType);
+                 outputfile.append("\n");
+                for(int i = 0; i < 5; i++){
+                    long time = getTimeToSortArray(10000 * (int)Math.pow(2,i), sortType);
+                    outputfile.append(Integer.toString(10000 * (int)Math.pow(2,i)));
+                    outputfile.append(",");
+                    outputfile.append(Long.toString(time));
+                    outputfile.append("\n");
+                }
+                 /* 
+                 for(String i: answersArray){
+                  System.out.println(i);
+                 }
+                 */
+         
+           
+                 // closing writer connection
+                 outputfile.close();
+             }
+             catch (IOException e) {
+                 // TODO Auto-generated catch block
+                 e.printStackTrace();
+             }
+        
         }
         
-    }
 
 	/**
 	 * Creates an array a certain length depend on parameter
@@ -79,7 +93,7 @@ public class SortDriver {
 		Random rand = new Random();
 		int arr[] = new int[numOfIntegers];
 		for(int i = 0; i < arr.length; i++){
-			arr[i] =  rand.nextInt(2147483647);
+			arr[i] =  rand.nextInt(Integer.MAX_VALUE);
 		}
 		return arr;
 	}
@@ -263,32 +277,38 @@ public class SortDriver {
   
         System.out.println();
     }
+    public static long getTimeToSortArray(int size, int sortType){
+        int[] randomNumbers = randomValues(size);
+        long preSort = System.currentTimeMillis();
+        SortDriver ob = new SortDriver();
+        if(sortType == 1){          
+		    ob.selecionSort(randomNumbers);
+        }else if(sortType == 2){       
+			ob.sort(randomNumbers, 0, size - 1); //user input array goes here instead
+        }else if(sortType == 3){
+            ob.insertionSort(randomNumbers);
+        }else if(sortType == 4){
+            quickSort(randomNumbers, 0, size - 1);
+        }
+        long postSort = System.currentTimeMillis();
+        return postSort - preSort;
+    }
 	// Driver method
 	public static void main(String args[]) {
 		int sortType = getSortType();
 		int numOfIntValues = getNumOfIntValues();
         if(numOfIntValues == -1){
-            numOfIntValues = getValueFromSet(); 
+            getValueFromSet(sortType); 
+        }else{
+            long time;
+            time = getTimeToSortArray(numOfIntValues, sortType);
+            System.out.print(time);
+            }
+            
         }
-        int[] randomNumbers = randomValues(numOfIntValues);
-        long preSort = System.currentTimeMillis();
-        if(sortType == 1){
-            SortDriver ob = new SortDriver();
-		    ob.selecionSort(randomNumbers);
-
-        }else if(sortType == 2){
-            SortDriver ob = new SortDriver();
-			ob.sort(randomNumbers, 0, numOfIntValues - 1); //user input array goes here instead
-
-        }else if(sortType == 3){
-            SortDriver ob = new SortDriver();
-            ob.insertionSort(randomNumbers);
-        }else if(sortType == 4){
-            quickSort(randomNumbers, 0, numOfIntValues - 1);
-            System.out.println("Sorted array: ");  
-        }
-        long postSort = System.currentTimeMillis();
-        System.out.println(postSort - preSort);
+        
+        //int[] randomNumbers = randomValues(numOfIntValues);
+        
         //printArray(randomNumbers, numOfIntValues);
         
 	}
