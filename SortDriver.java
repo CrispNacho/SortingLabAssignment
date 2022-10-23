@@ -273,7 +273,7 @@ public class SortDriver {
         int[] randomNumbers = randomValues(numOfIntValues);
         long preSort = System.currentTimeMillis();
         if(sortType == 1){
-            SelectionSort ob = new SelectionSort();
+            SortDriver ob = new SortDriver();
 		    ob.selecionSort(randomNumbers);
 
         }else if(sortType == 2){
