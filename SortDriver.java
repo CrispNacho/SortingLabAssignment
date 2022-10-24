@@ -219,7 +219,7 @@ public class SortDriver {
 		{
 			// Find the middle point
 			int m = (l+r)/2;
-
+ 
 			// Sort first and second halves
 			sort(arr, l, m);
 			sort(arr , m+1, r);
@@ -335,6 +335,18 @@ public class SortDriver {
 	public static void main(String args[]) {
         System.out.println("Welcome To The Sorting Machine");
 		int sortType = getSortType();
+
+        // min and max value
+        // not correct variable name for arr
+        System.out.println("Maximum Value");
+        int min = arr[arr.length-1];
+            System.out.println(min);
+
+        System.out.println("Minimum Value");
+        int max = arr[0];
+
+        
+            System.out.println(max);
 		int numOfIntValues = getNumOfIntValues();
         if(numOfIntValues == -1){
             getValueFromSet(sortType);
