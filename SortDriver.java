@@ -357,7 +357,7 @@ public class SortDriver {
         }else{
             long time;
             time = getTimeToSortArray(numOfIntValues, sortType);
-            System.out.print("Sort time: " + time);
+            System.out.print("Sort Time: " + time + " Miliseconds");
             }
             
         }
