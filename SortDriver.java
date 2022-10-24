@@ -329,6 +329,19 @@ public class SortDriver {
             quickSort(randomNumbers, 0, size - 1);
         }
         long postSort = System.currentTimeMillis();
+
+        // Print min and max values
+        // min and max value
+
+        System.out.println("Minimum Value");
+        int min = randomNumbers[0];
+            System.out.println(min);
+
+        System.out.println("Maximum Value");
+        int max = randomNumbers[randomNumbers.length-1];
+            System.out.println(max);
+
+
         return postSort - preSort;
     }
 	// Driver method
@@ -336,17 +349,7 @@ public class SortDriver {
         System.out.println("Welcome To The Sorting Machine");
 		int sortType = getSortType();
 
-        // min and max value
-        // not correct variable name for arr
-        System.out.println("Maximum Value");
-        int min = arr[arr.length-1];
-            System.out.println(min);
 
-        System.out.println("Minimum Value");
-        int max = arr[0];
-
-        
-            System.out.println(max);
 		int numOfIntValues = getNumOfIntValues();
         if(numOfIntValues == -1){
             getValueFromSet(sortType);
