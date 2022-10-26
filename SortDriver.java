@@ -7,7 +7,10 @@ import java.io.IOException;
 
 
 public class SortDriver {
-
+    /**
+     * Gets the sort type that the user wants 
+     * @return an integer that corresponds to the sort type
+     */
 	public static int getSortType(){
         while(true){
         Scanner reader = new Scanner(System.in);
@@ -27,6 +30,10 @@ public class SortDriver {
         }
         
     }
+    /**
+     * Gets number of integer values that a user would like to sort
+     * @return the number of int values
+     */
     public static int getNumOfIntValues(){
         while(true){
             Scanner reader = new Scanner(System.in);
@@ -46,33 +53,6 @@ public class SortDriver {
             }
     }
     public static void getValueFromSet(int sortType){
-            /* 
-        while(true){
-                Scanner reader = new Scanner(System.in);
-                System.out.println("Select a number from the following: 1:10000 2:20000 3:40000 4:80000 5:160000");
-                String sortType2 = reader.nextLine();
-                int x = 0;
-                try{x = Integer.parseInt(sortType2);
-        
-                }catch(Exception numberformatException){
-                    System.out.println("Enter number");
-                    continue;
-                }
-                if(x == 1){
-                    return 10000;
-                }else if(x==2){
-                    return 20000;
-                }else if(x==3){
-                    return 40000;   
-                }else if(x==4){
-                    return 80000;    
-                }else if(x==5){
-                    return 160000;
-                }
-            }
-        
-            //System.out.println("Enter number within range");
-            */
             String filePath = "predefinedArrays.csv"; 
              // first create file object for file placed at location
              // specified by filepath
@@ -92,11 +72,6 @@ public class SortDriver {
                     outputfile.append(Long.toString(time));
                     outputfile.append("\n");
                 }
-                 /* 
-                 for(String i: answersArray){
-                  System.out.println(i);
-                 }
-                 */
            
                  // closing writer connection
                  outputfile.close();
@@ -314,7 +289,12 @@ public class SortDriver {
   
         System.out.println();
     }
-
+    /**
+     * Gets the time in milliseconds to sort in an array of a varying size
+     * @param size the number of values in the array
+     * @param sortType the number corresponding to sort type of the array
+     * @return the long value of the time in milliseconds to sort the array
+     */
     public static long getTimeToSortArray(int size, int sortType){
         int[] randomNumbers = randomValues(size);
         long preSort = System.currentTimeMillis();
@@ -349,7 +329,6 @@ public class SortDriver {
         System.out.println("Welcome To The Sorting Machine");
 		int sortType = getSortType();
 
-
 		int numOfIntValues = getNumOfIntValues();
         if(numOfIntValues == -1){
             getValueFromSet(sortType);
@@ -361,9 +340,6 @@ public class SortDriver {
             }
             
         }
-        
-        //int[] randomNumbers = randomValues(numOfIntValues);
-        
-        //printArray(randomNumbers, numOfIntValues);
+
         
 	}
