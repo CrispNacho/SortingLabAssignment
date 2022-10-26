@@ -53,7 +53,7 @@ public class SortDriver {
             }
     }
     public static void getValueFromSet(int sortType){
-            String filePath = "predefinedArrays.csv"; 
+            String filePath = "results.csv"; 
              // first create file object for file placed at location
              // specified by filepath
              try {
